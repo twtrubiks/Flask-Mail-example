@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>FLASK-MAIL DEMO</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='stylesheets/bootstrap.min.css')}}" type="text/css" />
+    <script src="{{ url_for('static', filename='js/jquery.min.js')}}"></script>
+    <script src="{{ url_for('static', filename='js/bootstrap.min.js')}}"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="jumbotron">
+            <h1>FLASK-MAIL DEMO</h1>
+            <p>SEND-MAIL Example Use Flask</p>
+        </div>
+        <form action="/api/send_mail" method="post">
+            <div class="form-group">
+                <label for="InputEmail">Email</label>
+                <input type="email" class="form-control" name="email" placeholder="Enter Email" required>
+            </div>
+            <button type="submit" class="btn btn-default">Submit</button>
+        </form>
+    </div>
+</body>
+</html>
