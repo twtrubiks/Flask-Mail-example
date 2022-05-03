@@ -1,9 +1,9 @@
 # Flask-Mail-example
 Flask-Mail - 使用 Python Flask 完成寄信功能
 
-* [線上Demo mail 純文件](http://pythontt-twtrubikscode.rhcloud.com/mail_page)  
-* [線上Demo mail 圖片附件](http://pythontt-twtrubikscode.rhcloud.com/mail_page_img)  
-* [Youtube Demo](https://youtu.be/qqOgDPSD3jc)  
+* [線上Demo mail 純文件](http://pythontt-twtrubikscode.rhcloud.com/mail_page)
+* [線上Demo mail 圖片附件](http://pythontt-twtrubikscode.rhcloud.com/mail_page_img)
+* [Youtube Demo](https://youtu.be/qqOgDPSD3jc)
 
 常看到別人的網站有寄信功能，今天教你使用 Python [Flask](http://flask.pocoo.org/) 快速建立一個。
 
@@ -20,12 +20,12 @@ Flask-Mail - 使用 Python Flask 完成寄信功能
 
 
 ### Flask-Mail
-``` 
+```
 pip install Flask-Mail
 ```
 
 記得將下方程式碼修改為自己的 Gmail 帳號和密碼
-``` 
+```
 app.config.update(
     DEBUG=False,
     # EMAIL SETTINGS
@@ -41,7 +41,7 @@ app.config.update(
 mail = Mail(app)
 ```
 
-更多 Flask-Mail ，可參考  [Flask-Mail](http://pythonhosted.org/Flask-Mail/) 
+更多 Flask-Mail ，可參考  [Flask-Mail](http://pythonhosted.org/Flask-Mail/)
 
 
 
@@ -63,14 +63,27 @@ mail = Mail(app)
 
 ### 第二步
 
-接著到 [Security Here](https://www.google.com/settings/security/lesssecureapps) 去開啟權限。
-
+接著到 [Security Here](https://www.google.com/settings/security/lesssecureapps) 去開啟權限 (2022/5/30 後關閉)
 
 ![alt tag](http://i.imgur.com/nMWcYDh.jpg)
 
-P.S <br>
-這步驟請多確認幾次，有時候你明明開啟了，但下一次去點他他卻還是關閉的。
+新的方法,
 
+到帳號的安全性, 一定要開啟兩步驟驗證,
+
+![alt tag](https://i.imgur.com/IMSPInG.png)
+
+接著設定應用程式密碼, 可以選 其他(自訂名稱)
+
+![alt tag](https://i.imgur.com/ds2Ia36.png)
+
+接著會跳出一組密碼
+
+![alt tag](https://i.imgur.com/11qtT9M.png)
+
+使用你的信箱帳號和這組應用程式密碼即可
+
+![alt tag](https://i.imgur.com/tHavtEa.png)
 
 ## 執行畫面
 首頁
@@ -88,7 +101,7 @@ P.S <br>
 
 P.S <br>
 
-<b>可能遇到的問題一 :</b> 
+<b>可能遇到的問題一 :</b>
 
 有時候你會遇到 <b>smtplib.SMTPAuthenticationError</b> 的錯誤訊息，
 
@@ -101,12 +114,12 @@ P.S <br>
 卻又出現 <b>smtplib.SMTPAuthenticationError</b> 的錯誤訊息，
 
 這時候你可以試著去改你的 Gmail 密碼，改成密碼是高強度並且第一個英文字母是大寫的!!
- 
+
 ## 執行環境
 * Python 3.4.3
 
-## Reference 
-* [Flask-Mail](http://pythonhosted.org/Flask-Mail/) 
+## Reference
+* [Flask-Mail](http://pythonhosted.org/Flask-Mail/)
 
 ## License
 MIT license
