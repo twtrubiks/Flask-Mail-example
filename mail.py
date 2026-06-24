@@ -1,5 +1,5 @@
 from flask import *
-from flask_mail import Mail, Message
+from flask_mailman import Mail, EmailMessage
 
 app = Flask(__name__)
 
@@ -9,8 +9,7 @@ app.config.update(
     MAIL_SERVER='smtp.gmail.com',
     MAIL_PORT=465,
     MAIL_USE_SSL=True,
-    MAIL_DEFAULT_SENDER=('admin', 'xxxxxxxx@gmail.com'),
-    MAIL_MAX_EMAILS=10,
+    MAIL_DEFAULT_SENDER='admin <xxxxxxxx@gmail.com>',
     MAIL_USERNAME='xxxxxxxx@gmail.com',
     MAIL_PASSWORD='xxxxxxxxxxx'
 )
@@ -28,18 +27,18 @@ def index():
 def send_mail():
     email = request.form['email'].strip()
     subject = 'Hello'
-    message = '這是 flask-mail example <br> <br>' \
+    message = '這是 flask-mailman example <br> <br>' \
               '附上一張圖片 <br> <br>' \
               '<b  style="color:#FF4E4E" >新垣結衣</b>'
-    msg = Message(
+    msg = EmailMessage(
         subject=subject,
-        recipients=[email],
-        html=message
+        body=message,
+        to=[email]
     )
-    # msg.body = '純文字'
+    msg.content_subtype = "html"
     with app.open_resource("static/images/image.jpg") as fp:
-        msg.attach("image.jpg", "image/jpg", fp.read())
-    mail.send(msg)
+        msg.attach("image.jpg", fp.read(), "image/jpg")
+    msg.send()
 
     # return "請到你的信箱收信~ ^0^"
     return render_template("thank.html")
@@ -57,21 +56,23 @@ def Bulk_emails():
         {"name": "xxxxxxxxxx", "email": "xxxxxxxxxx"},
     ]
 
-    with mail.connect() as conn:
+    with mail.get_connection() as connection:
         for user in users:
             subject = 'hello, {}'.format(user['name'])
 
-            message = '這是 flask-mail example <br> <br>' \
+            message = '這是 flask-mailman example <br> <br>' \
                       '附上一張圖片 <br> <br>' \
                       '<b  style="color:#FF4E4E" >新垣結衣</b>'
-            msg = Message(subject=subject,
-                          recipients=[user['email']],
-                          html=message,
-                          )
-            # msg.body = '純文字'
-            with app.open_resource("static/image.jpg") as fp:
-                msg.attach("image.jpg", "image/jpg", fp.read())
-            conn.send(msg)
+            msg = EmailMessage(
+                subject=subject,
+                body=message,
+                to=[user['email']],
+                connection=connection
+            )
+            msg.content_subtype = "html"
+            with app.open_resource("static/images/image.jpg") as fp:
+                msg.attach("image.jpg", fp.read(), "image/jpg")
+            msg.send()
 
     return "請到你的信箱收信~ ^0^"
 

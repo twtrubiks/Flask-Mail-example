@@ -1,25 +1,25 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-Hant">
 <head>
     <meta charset="UTF-8">
-    <title>FLASK-MAIL DEMO</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='stylesheets/bootstrap.min.css')}}" type="text/css" />
-    <script src="{{ url_for('static', filename='js/jquery.min.js')}}"></script>
-    <script src="{{ url_for('static', filename='js/bootstrap.min.js')}}"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>FLASK-MAILMAN DEMO</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
 </head>
 <body>
-    <div class="container">
-        <div class="jumbotron">
-            <h1>FLASK-MAIL DEMO</h1>
-            <p>SEND-MAIL Example Use Flask</p>
+    <div class="container py-4">
+        <div class="p-5 mb-4 bg-light rounded-3">
+            <h1 class="display-5 fw-bold">FLASK-MAILMAN DEMO</h1>
+            <p class="fs-4">SEND-MAIL Example Use Flask</p>
         </div>
         <form action="/api/send_mail" method="post">
-            <div class="form-group">
-                <label for="InputEmail">Email</label>
-                <input type="email" class="form-control" name="email" placeholder="Enter Email" required>
+            <div class="mb-3">
+                <label for="InputEmail" class="form-label">Email</label>
+                <input type="email" class="form-control" id="InputEmail" name="email" placeholder="Enter Email" required>
             </div>
-            <button type="submit" class="btn btn-default">Submit</button>
+            <button type="submit" class="btn btn-primary">Submit</button>
         </form>
     </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
 </body>
 </html>
